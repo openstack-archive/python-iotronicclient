@@ -34,6 +34,7 @@ class PluginManager(base.CreateManager):
 
     def list(self, marker=None, limit=None,
              detail=False, sort_key=None, sort_dir=None, fields=None,
+             public=None,
              with_public=False, all_plugins=False):
         """Retrieve a list of plugins.
 
@@ -77,15 +78,18 @@ class PluginManager(base.CreateManager):
 
         filters = utils.common_filters(marker, limit, sort_key, sort_dir,
                                        fields)
-
-        if with_public:
-            filters.append('with_public=true')
-        if all_plugins:
-            filters.append('all_plugins=true')
-
         path = ''
-        if detail:
-            path += 'detail'
+        if not public:
+            if with_public:
+                filters.append('with_public=true')
+            if all_plugins:
+                filters.append('all_plugins=true')
+
+            if detail:
+                path += 'detail'
+
+        else:
+            path += 'public'
 
         if filters:
             path += '?' + '&'.join(filters)

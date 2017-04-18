@@ -83,6 +83,12 @@ def do_plugin_show(cc, args):
     default=False,
     help="with public plugins")
 @cliutils.arg(
+    '--public',
+    dest='public',
+    action='store_true',
+    default=False,
+    help="get only public plugins")
+@cliutils.arg(
     '--all-plugins',
     dest='all_plugins',
     action='store_true',
@@ -123,6 +129,9 @@ def do_plugin_list(cc, args):
 
     if args.with_public:
         params['with_public'] = args.with_public
+
+    if args.public:
+        params['public'] = args.public
 
     if args.all_plugins:
         params['all_plugins'] = args.all_plugins

@@ -11,7 +11,7 @@
 #    under the License.
 
 """
-Command-line interface to the OpenStack Bare Metal Provisioning API.
+Command-line interface to the Iotronic API.
 """
 
 from __future__ import print_function

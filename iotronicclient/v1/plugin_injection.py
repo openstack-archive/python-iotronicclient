@@ -52,7 +52,7 @@ class InjectionPluginManager(base.Manager):
     def plugins_on_board(self, board_ident, marker=None, limit=None,
                          detail=False, sort_key=None, sort_dir=None,
                          fields=None):
-        """Retrieve a list of boards.
+        """Retrieve the list of plugins on the board.
 
         :param board_ident: the UUID or name of the board.
 

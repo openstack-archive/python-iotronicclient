@@ -77,9 +77,20 @@ def do_plugin_remove(cc, args):
 @cliutils.arg('action',
               metavar='<action>',
               help="action of the plugin.")
+@cliutils.arg(
+    '--params',
+    metavar='<parameter=value>',
+    nargs='+',
+    action='append',
+    default=[],
+    help="Parameters of the action")
 def do_plugin_action(cc, args):
+    params = {}
+    if args.params:
+        params = {k: v for k, v in (x.split('=') for x in args.params[0])}
+
     result = cc.plugin_injection.plugin_action(args.board, args.plugin,
-                                               args.action)
+                                               args.action, params)
     print(_('%s') % result)
 
 
@@ -92,7 +103,10 @@ def do_plugins_on_board(cc, args):
     field_labels = res_fields.PLUGIN_INJECT_RESOURCE_ON_BOARD.labels
     """Show detailed information about a board."""
     list = cc.plugin_injection.plugins_on_board(args.board)
-    cliutils.print_list(list, fields=fields,
-                        field_labels=field_labels,
-                        sortby_index=None,
-                        json_flag=args.json)
+    if list:
+        cliutils.print_list(list, fields=fields,
+                            field_labels=field_labels,
+                            sortby_index=None,
+                            json_flag=args.json)
+    else:
+        print(_('%s') % 'no plugin could be found')

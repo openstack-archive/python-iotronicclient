@@ -1,0 +1,8 @@
+Code-Review+2: Fabio Verboso <fverboso@unime.it>
+Workflow+1: Fabio Verboso <fverboso@unime.it>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 08 May 2017 09:13:33 +0000
+Reviewed-on: https://review.openstack.org/463283
+Project: openstack/python-iotronicclient
+Branch: refs/heads/master

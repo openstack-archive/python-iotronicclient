@@ -14,6 +14,7 @@ from iotronicclient.common.apiclient import exceptions
 from iotronicclient.common import cliutils
 from iotronicclient.common.i18n import _
 from iotronicclient.v1 import resource_fields as res_fields
+import json
 
 
 def _print_injected(injection, fields=None, json=False):
@@ -84,11 +85,17 @@ def do_plugin_remove(cc, args):
     action='append',
     default=[],
     help="Parameters of the action")
+@cliutils.arg(
+    '--params-file',
+    metavar='<params_file>',
+    help="Json file of parameters")
 def do_plugin_action(cc, args):
     params = {}
-    if args.params:
+    if args.params_file:
+        with open(args.params_file, 'r') as fil:
+            params = json.load(fil)
+    elif args.params:
         params = {k: v for k, v in (x.split('=') for x in args.params[0])}
-
     result = cc.plugin_injection.plugin_action(args.board, args.plugin,
                                                args.action, params)
     print(_('%s') % result)

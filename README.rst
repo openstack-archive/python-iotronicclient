@@ -1,19 +1,26 @@
 ===============================
-replace with the name for the git repo
+python-iotronicclient
 ===============================
 
 Iotronic Client
 
-Please fill here a long description which must be at least 3 lines wrapped on
-80 cols, so that distribution package maintainers can use it in their packages.
-Note that this is a hard requirement.
+Client for the IoTronic service.
+
+.. contents:: Contents:
+   :local:
+
+Installing
+----------------------
+
+Clone the repo
+
+    ``git clone https://github.com/openstack/python-iotronicclient.git``
+    ``cd python-iotronicclient``
+    ``pip install -r requirements.txt``
+    ``python setup.py install``
+
 
 * Free software: Apache license
-* Documentation: http://docs.openstack.org/developer/replace with the name for the git repo
-* Source: http://git.openstack.org/cgit/openstack/replace with the name for the git repo
-* Bugs: http://bugs.launchpad.net/iotronic
+* Source: http://git.openstack.org/cgit/openstack/python-iotronicclient
+* Bugs: http://bugs.launchpad.net/python-iotronicclient
 
-Features
---------
-
-* TODO

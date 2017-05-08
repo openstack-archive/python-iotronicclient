@@ -39,6 +39,7 @@ def _print_injected(injection, fields=None, json=False):
     default=False,
     help="Start the plugin on boot")
 def do_plugin_inject(cc, args):
+    """Inject a plugin into a board."""
     onboot = False
     if args.onboot:
         onboot = True
@@ -59,6 +60,7 @@ def do_plugin_inject(cc, args):
               metavar='<plugin>',
               help="Name or UUID of the plugin.")
 def do_plugin_remove(cc, args):
+    """Remove a plugin from a board."""
     try:
         cc.plugin_injection.plugin_remove(args.board, args.plugin)
         print(_('Removed plugin %(plugin)s from board %(board)s') % {
@@ -90,6 +92,7 @@ def do_plugin_remove(cc, args):
     metavar='<params_file>',
     help="Json file of parameters")
 def do_plugin_action(cc, args):
+    """Execute an action of the plugin."""
     params = {}
     if args.params_file:
         with open(args.params_file, 'r') as fil:
@@ -106,9 +109,9 @@ def do_plugin_action(cc, args):
     metavar='<id>',
     help="Name or UUID of the board ")
 def do_plugins_on_board(cc, args):
+    """Show information about a the plugins injected on a board."""
     fields = res_fields.PLUGIN_INJECT_RESOURCE_ON_BOARD.fields
     field_labels = res_fields.PLUGIN_INJECT_RESOURCE_ON_BOARD.labels
-    """Show detailed information about a board."""
     list = cc.plugin_injection.plugins_on_board(args.board)
     if list:
         cliutils.print_list(list, fields=fields,

@@ -45,7 +45,7 @@ help::
        plugin-action       Execute an action of the plugin.
        plugin-inject       Inject a plugin into a board.
        plugin-remove       Remove a plugin from a board.
-       plugins-on-board    Show information about a the plugins injected on a
+       plugins-on-board    Show information about the plugins injected on a
                            board.
        bash-completion     Prints all of the commands and options for bash-
                            completion.

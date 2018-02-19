@@ -19,8 +19,10 @@ from iotronicclient.common.http import DEFAULT_VER
 from iotronicclient.common.i18n import _
 from iotronicclient import exc
 from iotronicclient.v1 import board
+from iotronicclient.v1 import exposed_service
 from iotronicclient.v1 import plugin
 from iotronicclient.v1 import plugin_injection
+from iotronicclient.v1 import service
 
 
 class Client(object):
@@ -60,4 +62,7 @@ class Client(object):
         self.board = board.BoardManager(self.http_client)
         self.plugin = plugin.PluginManager(self.http_client)
         self.plugin_injection = plugin_injection.InjectionPluginManager(
+            self.http_client)
+        self.service = service.ServiceManager(self.http_client)
+        self.exposed_service = exposed_service.ExposedServiceManager(
             self.http_client)

@@ -50,8 +50,14 @@ class Resource(object):
         'onboot': 'On Boot',
         'board_uuid': 'Board uuid',
         'plugin_uuid': 'Plugin uuid',
+        'service_uuid': 'Service uuid',
         'plugin': 'Plugin',
         'parameters': 'Parameters',
+        'service': 'Service',
+        'port': 'Port',
+        'public_port': 'Public Port',
+        'pid': 'Pid',
+        'protocol': 'Protocol',
 
         #
         # 'address': 'Address',
@@ -175,6 +181,8 @@ PLUGIN_DETAILED_RESOURCE = Resource(
      'code',
      'public',
      'callable',
+     'created_at',
+     'updated_at',
      'extra'
 
      ],
@@ -203,6 +211,45 @@ PLUGIN_INJECT_RESOURCE = Resource(
      'plugin_uuid',
      'status',
      'onboot',
+     'created_at',
+     'updated_at',
+     ])
+
+# Service
+SERVICE_DETAILED_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'port',
+     'project',
+     'protocol',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=[
+        'extra',
+    ])
+
+
+SERVICE_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'port',
+     'protocol'
+     ])
+
+EXPOSED_SERVICE_RESOURCE_ON_BOARD = Resource(
+    [
+        'service',
+        'public_port',
+        'created_at',
+        'updated_at',
+    ])
+
+EXPOSED_SERVICE_RESOURCE = Resource(
+    ['board_uuid',
+     'service_uuid',
+     'public_port',
      'created_at',
      'updated_at',
      ])

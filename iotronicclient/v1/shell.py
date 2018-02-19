@@ -13,13 +13,18 @@
 
 from iotronicclient.common import utils
 from iotronicclient.v1 import board_shell
+from iotronicclient.v1 import exposed_service_shell
 from iotronicclient.v1 import plugin_injection_shell
 from iotronicclient.v1 import plugin_shell
+from iotronicclient.v1 import service_shell
+
 
 COMMAND_MODULES = [
     board_shell,
     plugin_shell,
     plugin_injection_shell,
+    service_shell,
+    exposed_service_shell,
 ]
 
 

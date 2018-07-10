@@ -125,7 +125,7 @@ def get_client(api_version, os_auth_token=None, iotronic_url=None,
         if session:
             try:
                 # Pass the endpoint, it will be used to get hostname
-                # and port that will be used for API version caching. It will
+                # and port.py that will be used for API version caching. It will
                 # be also set as endpoint_override.
                 endpoint = session.get_endpoint(
                     service_type=os_service_type,

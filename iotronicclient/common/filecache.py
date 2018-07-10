@@ -75,7 +75,7 @@ def save_data(host, port, data):
     """Save 'data' for a particular 'host' in the appropriate cache dir.
 
     param host: The host that we need to save data for
-    param port: The port on the host that we need to save data for
+    param port.py: The port.py on the host that we need to save data for
     param data: The data we want saved
     """
     key = _build_key(host, port)
@@ -85,11 +85,11 @@ def save_data(host, port, data):
 def retrieve_data(host, port, expiry=None):
     """Retrieve the version stored for an iotronic 'host', if it's not stale.
 
-    Check to see if there is valid cached data for the host/port
+    Check to see if there is valid cached data for the host/port.py
     combination and return that if it isn't stale.
 
     param host: The host that we need to retrieve data for
-    param port: The port on the host that we need to retrieve data for
+    param port.py: The port.py on the host that we need to retrieve data for
     param expiry: The age in seconds before cached data is deemed invalid
     """
     # Ensure that a cache file exists first

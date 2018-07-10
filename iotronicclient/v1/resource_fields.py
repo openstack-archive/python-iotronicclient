@@ -58,6 +58,10 @@ class Resource(object):
         'public_port': 'Public Port',
         'pid': 'Pid',
         'protocol': 'Protocol',
+        'MAC_add': 'Mac Address',
+        'VIF_name': 'VIF',
+        'network': 'Network',
+        'ip': 'ip'
 
         #
         # 'address': 'Address',
@@ -159,7 +163,7 @@ BOARD_DETAILED_RESOURCE = Resource(
         'updated_at',
         'location',
         'project',
-        'owner',
+        'owner'
 
     ],
     sort_excluded=[
@@ -230,7 +234,6 @@ SERVICE_DETAILED_RESOURCE = Resource(
         'extra',
     ])
 
-
 SERVICE_RESOURCE = Resource(
     ['uuid',
      'name',
@@ -253,3 +256,29 @@ EXPOSED_SERVICE_RESOURCE = Resource(
      'created_at',
      'updated_at',
      ])
+
+PORT_RESOURCE = Resource(
+    ['uuid',
+     'MAC_add',
+     'VIF_name',
+     'network',
+     'board_uuid',
+     'ip'
+     ]
+)
+# Service
+
+PORT_DETAILED_RESOURCE = Resource(
+    ['uuid',
+     'MAC_add',
+     'VIF_name',
+     'network',
+     'ip',
+     'board_uuid',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=[
+        'extra',
+    ])

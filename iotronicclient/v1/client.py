@@ -22,6 +22,7 @@ from iotronicclient.v1 import board
 from iotronicclient.v1 import exposed_service
 from iotronicclient.v1 import plugin
 from iotronicclient.v1 import plugin_injection
+from iotronicclient.v1 import port
 from iotronicclient.v1 import service
 
 
@@ -65,4 +66,8 @@ class Client(object):
             self.http_client)
         self.service = service.ServiceManager(self.http_client)
         self.exposed_service = exposed_service.ExposedServiceManager(
+            self.http_client)
+        self.port = port.PortManager(
+            self.http_client)
+        self.portonboard = port.PortOnBoardManager(
             self.http_client)

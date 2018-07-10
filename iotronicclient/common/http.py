@@ -81,7 +81,7 @@ def _extract_error_json(body):
 
 
 def get_server(endpoint):
-    """Extract and return the server & port that we're connecting to."""
+    """Extract and return the server & port.py that we're connecting to."""
     if endpoint is None:
         return None, None
     parts = urlparse.urlparse(endpoint)
@@ -440,7 +440,7 @@ class VerifiedHTTPSConnection(six.moves.http_client.HTTPSConnection):
         self.insecure = insecure
 
     def connect(self):
-        """Connect to a host on a given (SSL) port.
+        """Connect to a host on a given (SSL) port.py.
 
         If ca_file is pointing somewhere, use it to check Server Certificate.
 

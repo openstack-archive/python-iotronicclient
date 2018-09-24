@@ -20,6 +20,7 @@ from iotronicclient.common.i18n import _
 from iotronicclient import exc
 from iotronicclient.v1 import board
 from iotronicclient.v1 import exposed_service
+from iotronicclient.v1 import fleet
 from iotronicclient.v1 import plugin
 from iotronicclient.v1 import plugin_injection
 from iotronicclient.v1 import port
@@ -71,3 +72,4 @@ class Client(object):
             self.http_client)
         self.portonboard = port.PortOnBoardManager(
             self.http_client)
+        self.fleet = fleet.FleetManager(self.http_client)

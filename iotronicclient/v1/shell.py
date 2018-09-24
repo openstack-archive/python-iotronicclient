@@ -14,6 +14,7 @@
 from iotronicclient.common import utils
 from iotronicclient.v1 import board_shell
 from iotronicclient.v1 import exposed_service_shell
+from iotronicclient.v1 import fleet_shell
 from iotronicclient.v1 import plugin_injection_shell
 from iotronicclient.v1 import plugin_shell
 from iotronicclient.v1 import port_shell
@@ -26,6 +27,7 @@ COMMAND_MODULES = [
     service_shell,
     exposed_service_shell,
     port_shell,
+    fleet_shell,
 ]
 
 

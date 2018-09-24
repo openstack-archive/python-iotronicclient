@@ -61,7 +61,8 @@ class Resource(object):
         'MAC_add': 'Mac Address',
         'VIF_name': 'VIF',
         'network': 'Network',
-        'ip': 'ip'
+        'ip': 'ip',
+        'description': 'Description',
 
         #
         # 'address': 'Address',
@@ -70,7 +71,6 @@ class Resource(object):
         # 'chassis_uuid': 'Chassis UUID',
         # 'clean_step': 'Clean Step',
         # 'console_enabled': 'Console Enabled',
-        # 'description': 'Description',
         # 'http_methods': 'Supported HTTP methods',
         # 'inspection_finished_at': 'Inspection Finished At',
         # 'inspection_started_at': 'Inspection Started At',
@@ -257,6 +257,8 @@ EXPOSED_SERVICE_RESOURCE = Resource(
      'updated_at',
      ])
 
+# Port
+
 PORT_RESOURCE = Resource(
     ['uuid',
      'MAC_add',
@@ -266,7 +268,6 @@ PORT_RESOURCE = Resource(
      'ip'
      ]
 )
-# Service
 
 PORT_DETAILED_RESOURCE = Resource(
     ['uuid',
@@ -282,3 +283,25 @@ PORT_DETAILED_RESOURCE = Resource(
     sort_excluded=[
         'extra',
     ])
+
+# Fleet
+
+FLEET_DETAILED_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'project',
+     'description',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=[
+        'extra',
+    ])
+
+FLEET_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'project',
+     'description'
+     ])

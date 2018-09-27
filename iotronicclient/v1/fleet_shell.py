@@ -117,6 +117,97 @@ def do_fleet_list(cc, args):
 
 
 @cliutils.arg(
+    'fleet',
+    metavar='<id>',
+    help="Name or UUID of the fleet ")
+@cliutils.arg(
+    '--limit',
+    metavar='<limit>',
+    type=int,
+    help='Maximum number of boards to return per request, '
+         '0 for no limit. Default is the maximum number used '
+         'by the Iotronic API Service.')
+@cliutils.arg(
+    '--marker',
+    metavar='<board>',
+    help='Board UUID (for example, of the last board in the list from '
+         'a previous request). Returns the list of boards after this UUID.')
+@cliutils.arg(
+    '--sort-key',
+    metavar='<field>',
+    help='Board field that will be used for sorting.')
+@cliutils.arg(
+    '--status',
+    metavar='<field>',
+    help='Filter by board status ')
+@cliutils.arg(
+    '--sort-dir',
+    metavar='<direction>',
+    choices=['asc', 'desc'],
+    help='Sort direction: "asc" (the default) or "desc".')
+@cliutils.arg(
+    '--project',
+    metavar='<project>',
+    help="Project of the list.")
+@cliutils.arg(
+    '--detail',
+    dest='detail',
+    action='store_true',
+    default=False,
+    help="Show detailed information about the boards.")
+@cliutils.arg(
+    '--fields',
+    nargs='+',
+    dest='fields',
+    metavar='<field>',
+    action='append',
+    default=[],
+    help="One or more board fields. Only these fields will be fetched from "
+         "the server. Can not be used when '--detail' is specified.")
+def do_boards_in_fleets(cc, args):
+    """List the boards which are registered in a Iotronic Fleet."""
+    fields = args.fields[0] if args.fields else None
+    utils.check_empty_arg(args.fleet, '<id>')
+    utils.check_for_invalid_fields(
+        fields, res_fields.FLEET_DETAILED_RESOURCE.fields)
+
+    params = {}
+    params['fleet'] = args.fleet
+
+    if args.status:
+        params['status'] = args.status
+
+    if args.project is not None:
+        params['project'] = args.project
+
+    if args.detail:
+        fields = res_fields.BOARD_DETAILED_RESOURCE.fields
+        field_labels = res_fields.BOARD_DETAILED_RESOURCE.labels
+    elif args.fields:
+        utils.check_for_invalid_fields(
+            args.fields[0], res_fields.BOARD_DETAILED_RESOURCE.fields)
+        resource = res_fields.Resource(args.fields[0])
+        fields = resource.fields
+        field_labels = resource.labels
+    else:
+        fields = res_fields.BOARD_RESOURCE.fields
+        field_labels = res_fields.BOARD_RESOURCE.labels
+
+    sort_fields = res_fields.BOARD_DETAILED_RESOURCE.sort_fields
+    sort_field_labels = res_fields.BOARD_DETAILED_RESOURCE.sort_labels
+
+    params.update(utils.common_params_for_list(args,
+                                               sort_fields,
+                                               sort_field_labels))
+
+    boards = cc.fleet.boards_in_fleets(**params)
+    cliutils.print_list(boards, fields,
+                        field_labels=field_labels,
+                        sortby_index=None,
+                        json_flag=args.json)
+
+
+@cliutils.arg(
     'name',
     metavar='<name>',
     help="Name or UUID of the fleet ")

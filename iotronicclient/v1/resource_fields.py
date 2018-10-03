@@ -63,7 +63,7 @@ class Resource(object):
         'network': 'Network',
         'ip': 'ip',
         'description': 'Description',
-
+        'fleet': 'Fleet',
         #
         # 'address': 'Address',
         # 'async': 'Async',
@@ -155,10 +155,12 @@ BOARD_DETAILED_RESOURCE = Resource(
         'name',
         'type',
         'status',
+        'fleet',
         'code',
         'session',
         'mobile',
         'extra',
+
         'created_at',
         'updated_at',
         'location',
@@ -173,6 +175,7 @@ BOARD_RESOURCE = Resource(
     ['uuid',
      'name',
      'type',
+     'fleet',
      'status',
      'session',
      ])

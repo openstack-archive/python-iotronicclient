@@ -155,6 +155,10 @@ def do_board_list(cc, args):
     metavar='<altitude>',
     help="Altitude of the board ")
 @cliutils.arg(
+    '--fleet',
+    metavar='<fleet>',
+    help="Fleet of the board.")
+@cliutils.arg(
     '--mobile',
     dest='mobile',
     action='store_true',
@@ -168,7 +172,7 @@ def do_board_list(cc, args):
          "Can be specified multiple times.")
 def do_board_create(cc, args):
     """Register a new board with the Iotronic service."""
-    field_list = ['name', 'code', 'type', 'mobile', 'extra']
+    field_list = ['name', 'code', 'type', 'mobile', 'fleet', 'extra']
 
     fields = dict((k, v) for (k, v) in vars(args).items()
                   if k in field_list and not (v is None))

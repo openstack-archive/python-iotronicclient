@@ -96,7 +96,7 @@ class FleetManager(base.CreateManager):
         return self._update(resource_id=fleet_id, patch=patch,
                             method=http_method)
 
-    def boards_in_fleets(self, status=None, marker=None, limit=None,
+    def boards_in_fleet(self, status=None, marker=None, limit=None,
                          detail=False, sort_key=None, sort_dir=None,
                          fields=None,
                          project=None, fleet=None):
@@ -147,7 +147,7 @@ class FleetManager(base.CreateManager):
         if status is not None:
             filters.append('status=%s' % status)
 
-        path = fleet + '/'
+        path = fleet + '/boards/'
 
         if detail:
             path += 'detail'

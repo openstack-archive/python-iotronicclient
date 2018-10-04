@@ -16,6 +16,7 @@ from iotronicclient.common import base
 from iotronicclient.common.i18n import _
 from iotronicclient.common import utils
 from iotronicclient import exc
+from iotronicclient.v1.board import Board
 
 LOG = logging.getLogger(__name__)
 _DEFAULT_POLL_INTERVAL = 2
@@ -155,7 +156,8 @@ class FleetManager(base.CreateManager):
             path += '?' + '&'.join(filters)
 
         if limit is None:
-            return self._list(self._path(path), "boards")
+            return self._list(self._path(path), "boards", obj_class=Board)
         else:
             return self._list_pagination(self._path(path), "boards",
+                                         obj_class=Board,
                                          limit=limit)

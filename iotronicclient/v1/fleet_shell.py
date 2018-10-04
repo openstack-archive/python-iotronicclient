@@ -164,7 +164,7 @@ def do_fleet_list(cc, args):
     default=[],
     help="One or more board fields. Only these fields will be fetched from "
          "the server. Can not be used when '--detail' is specified.")
-def do_boards_in_fleets(cc, args):
+def do_boards_in_fleet(cc, args):
     """List the boards which are registered in a Iotronic Fleet."""
     fields = args.fields[0] if args.fields else None
     utils.check_empty_arg(args.fleet, '<id>')
@@ -200,7 +200,7 @@ def do_boards_in_fleets(cc, args):
                                                sort_fields,
                                                sort_field_labels))
 
-    boards = cc.fleet.boards_in_fleets(**params)
+    boards = cc.fleet.boards_in_fleet(**params)
     cliutils.print_list(boards, fields,
                         field_labels=field_labels,
                         sortby_index=None,

@@ -29,7 +29,7 @@ class Board(base.Resource):
 class BoardManager(base.CreateManager):
     resource_class = Board
     _creation_attributes = ['name', 'code', 'type', 'location', 'mobile',
-                            'extra']
+                            'fleet', 'extra']
     _resource_name = 'boards'
 
     def list(self, status=None, marker=None, limit=None,

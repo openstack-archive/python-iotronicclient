@@ -19,6 +19,7 @@ from iotronicclient.v1 import plugin_injection_shell
 from iotronicclient.v1 import plugin_shell
 from iotronicclient.v1 import port_shell
 from iotronicclient.v1 import service_shell
+from iotronicclient.v1 import webservice_shell
 
 COMMAND_MODULES = [
     board_shell,
@@ -28,6 +29,7 @@ COMMAND_MODULES = [
     exposed_service_shell,
     port_shell,
     fleet_shell,
+    webservice_shell,
 ]
 
 

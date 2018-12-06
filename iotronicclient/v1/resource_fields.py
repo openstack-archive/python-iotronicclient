@@ -48,7 +48,7 @@ class Resource(object):
         'callable': 'Callable',
         'public': 'Public',
         'onboot': 'On Boot',
-        'board_uuid': 'Board uuid',
+        'board_uuid': 'Board',
         'plugin_uuid': 'Plugin uuid',
         'service_uuid': 'Service uuid',
         'plugin': 'Plugin',
@@ -64,6 +64,12 @@ class Resource(object):
         'ip': 'ip',
         'description': 'Description',
         'fleet': 'Fleet',
+        'secure': 'Sercure',
+        'http_port': 'HTTP Port',
+        'https_port': 'HTTPS Port',
+        'zone': 'Zone',
+        'dns': 'DNS',
+
         #
         # 'address': 'Address',
         # 'async': 'Async',
@@ -160,7 +166,6 @@ BOARD_DETAILED_RESOURCE = Resource(
         'session',
         'mobile',
         'extra',
-
         'created_at',
         'updated_at',
         'location',
@@ -307,4 +312,49 @@ FLEET_RESOURCE = Resource(
      'name',
      'project',
      'description'
+     ])
+
+# WebService
+WEBSERVICE_DETAILED_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'port',
+     'secure',
+     'board_uuid',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=[
+        'extra',
+    ])
+
+WEBSERVICE_RESOURCE = Resource(
+    ['uuid',
+     'name',
+     'port',
+     'board_uuid',
+     ])
+
+# WebService
+EXPWEBSERVICE_DETAILED_RESOURCE = Resource(
+    ['board_uuid',
+     'http_port',
+     'https_port',
+     'dns',
+     'zone',
+     'extra',
+     'created_at',
+     'updated_at',
+     ],
+    sort_excluded=[
+        'extra',
+    ])
+
+EXPWEBSERVICE_RESOURCE = Resource(
+    ['board_uuid',
+     'http_port',
+     'https_port',
+     'dns',
+     'zone',
      ])

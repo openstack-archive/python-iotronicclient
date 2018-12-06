@@ -25,6 +25,7 @@ from iotronicclient.v1 import plugin
 from iotronicclient.v1 import plugin_injection
 from iotronicclient.v1 import port
 from iotronicclient.v1 import service
+from iotronicclient.v1 import webservice
 
 
 class Client(object):
@@ -73,3 +74,8 @@ class Client(object):
         self.portonboard = port.PortOnBoardManager(
             self.http_client)
         self.fleet = fleet.FleetManager(self.http_client)
+        self.webservice = webservice.WebServiceManager(self.http_client)
+        self.webserviceonboard = webservice.WebServiceOnBoardManager(
+            self.http_client)
+        self.enabledwebservice = webservice.EnabledWebserviceManager(
+            self.http_client)

@@ -69,7 +69,7 @@ class Resource(object):
         'https_port': 'HTTPS Port',
         'zone': 'Zone',
         'dns': 'DNS',
-        'mac_addr': 'Mac Address',
+        'connectivity': 'Connectivity',
         'lr_version': 'LR Version'
 
     }
@@ -124,7 +124,7 @@ BOARD_DETAILED_RESOURCE = Resource(
         'status',
         'fleet',
         'lr_version',
-        'mac_addr',
+        'connectivity',
         'code',
         'session',
         'mobile',
